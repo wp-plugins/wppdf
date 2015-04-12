@@ -27,7 +27,7 @@ This plugin enables you to publish your PDF publications.It is idea for magazine
 Here's a link to Working demo's and examples [Demo and Example - Premium Edition](http://demo.wppdf.org/ "Click here for Demo and Examples") 
 
 
-Here's a link to the premium version [For Only $39](http://wppdf.org/ "Your ultimate flipbook software") 
+Here's a link to the If you want more features such as zoom please support the development by purchasing the premium version[Its Only $39](http://wppdf.org/ "Your ultimate flipbook software") 
 
 if you need assistant please contact us through info[@]wppdf.org 
 
