@@ -1,4 +1,4 @@
-=== Free PDF Wordpress Flipbook plugin ===
+=== Free PDF Wordpress Flipbook plugin (PDF Viewer) ===
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: http://example.com/
 Tags: Flipbook, issuu, PDF Viewer, PDF Flipbook Viewer, Free PDF Plugin , PDF Plugin book,  ebook, flip, flipbook, html5, jquery, magazine, page, pdf, turn, wordpress,wp, cataloge
