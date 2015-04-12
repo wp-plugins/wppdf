@@ -1,0 +1,63 @@
+=== Free PDF Wordpress Flipbook plugin ===
+Contributors: (this should be a list of wordpress.org userid's)
+Donate link: http://example.com/
+Tags: Flipbook, issue, PDF Viewer, PDF Flipbook Viewer, Free PDF Plugin , PDF Plugin
+Requires at least: 3.0.1
+Tested up to: 3.4
+Stable tag: 4.3
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Free PDF Flipbook plugin for wordpress. Renders pdf without converting to images.
+
+== Description ==
+
+This plugin enables you to publish your PDF publications.It is idea for magazines and catalogs. The features include page flip effect similar to the one on issuu but on your own wordpress blog. A pro edition is provided that has more functionality.
+
+
+== Installation ==
+
+This section describes how to install the plugin and get it working.
+
+e.g.
+
+1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Create new pdf publication by going to new-> publications and entering title and selecting pdf and icons
+
+== Frequently Asked Questions ==
+
+= Do I have to convert to images? =
+
+No! This plugin uses pdfjs libray to render pdf directly on brownser without any convertion
+
+
+== Screenshots ==
+
+1. Full rendering of a PDF Magazine 
+1. Flipbook Effect
+
+== Changelog ==
+
+= 1.0 =
+* Released first version.
+
+
+== Upgrade Notice ==
+
+= 1.0 =
+Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
+
+
+== Features ==
+
+Ordered list:
+
+1. Direct PDF Rendering No conversion
+1. Works with unlimited number of pages
+1. Flipbook effect 
+1. Free!!!
+
+Here's a link to Working demo's and examples [WPPDF](http://demo.wppdf.org/ "Click here for Demo and Examples") 
+
+Here's a link to the premium version [WPPDF](http://wppdf.org/ "Your ultimate flipbook software") 
