@@ -321,7 +321,7 @@
 
                         }
                     }
-                    rightPage.innerHTML = '<div id="instructions"><p> <i class="fa fa-search-plus fa-1x"></i>  click anywhere on the page to zoom in or out</p> <hr> <p> use arrows or drag page corners</p></div>';
+                    rightPage.innerHTML = '<div id="instructions"><p> <i class="fa fa-search-plus fa-1x"></i>  www.wppdf.org</p> <hr> <p> use arrows or drag page corners</p></div>';
 
                     $("#lp-right-page").css({background: "rgba(0,0,0,0)"});
                     $("#lp-left-page").css({background: "rgba(0,0,0,0)"});
@@ -885,7 +885,7 @@
                             }
                             $("#lp-clip2").css({"background": "#404040"});
                             $("#lp-clip2").css({"background-image": "url(texture.png)"});
-                            $("#lp-clip2").html('<div id="instructions"><p> <i class="fa fa-search-plus fa-1x"></i>  click anywhere on the page to zoom in or out</p> <hr> <p> use arrows or drag page corners</p></div>');
+                            $("#lp-clip2").html('<div id="instructions"><p> <i class="fa fa-search-plus fa-1x"></i>  www.wppdf.com </p> <hr> <p> use arrows or drag page corners</p></div>');
                             $('#lp-inner-clip').append(testDiv2);
                         }
                     }
