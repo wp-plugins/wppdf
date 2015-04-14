@@ -13,21 +13,31 @@ Free PDF Flipbook plugin for wordpress. Renders pdf without converting to images
 
 == Description ==
 
-This plugin enables you to publish your PDF publications.It is idea for magazines and catalogs. The features include page flip effect similar to the one on issuu but on your own wordpress blog. A pro edition is provided that has more functionality.
+Publish PDF Documents on your wordpress blog.This plugin is idea for magazines and catalogs.
 
-= Features = 
+= "pwpdf" Lite Features = 
 
 1. Direct PDF Rendering No conversion
 1. Works with unlimited number of pages
 1. Flipbook effect 
-1. Free!!!
+
+= Pro Version Features = 
+
+1. Direct PDF Rendering No conversion
+1. Works with unlimited number of pages
+1. Flipbook 
+1. Navigation Controls
+1. Mult-Zoom 
+1. Retina display support
+
+
 
 
 = Demo/Example =
 Here's a link to Working demo's and examples [Demo and Example - Premium Edition](http://demo.wppdf.org/ "Click here for Demo and Examples") 
 
 
-If you want more features such as zoom please support the development by purchasing the premium version[Its Only $39 ](http://wppdf.org/ "Your ultimate flipbook software") 
+If you want more features such as zoom please support the development by purchasing the premium version[Its Only $19 ](http://wppdf.org/ "Your ultimate flipbook software") 
 
 if you need assistant please contact us through info[@]wppdf.org 
 
