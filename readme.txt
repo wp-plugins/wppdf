@@ -19,17 +19,17 @@ Publish PDF Documents on your wordpress blog.This plugin is idea for magazines a
 
 1. Direct PDF Rendering No conversion
 1. Works with unlimited number of pages
-1. Flipbook effect 
+1. Flipbook effect
 
 = Pro Version Features = 
 
-1. Direct PDF Rendering No conversion
-1. Works with unlimited number of pages
+1. Direct PDF Rendering 
+1. unlimited number of pages
 1. Flipbook 
 1. Navigation Controls
 1. Mult-Zoom 
 1. Retina display support
-
+1. Shortcode support for book shelf
 
 
 
