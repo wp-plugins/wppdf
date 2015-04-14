@@ -30,15 +30,16 @@ Publish PDF Documents on your wordpress blog.This plugin is idea for magazines a
 1. Mult-Zoom 
 1. Retina display support
 1. Shortcode support for shelf and inserting publications in blogs
-1. 1 Year support 
+1. 1 Year support + updates
 
+[ Get start publishing your pdf's with pwpdf pro!  ](http://wppdf.org/ "Wppdf Pro Edition")
 
 
 = Demo/Example =
 Here's a link to Working demo's and examples [Demo and Example - Premium Edition](http://demo.wppdf.org/ "Click here for Demo and Examples") 
 
 
-If you want more features such as zoom please support the development by purchasing the premium version[Its Only $19 ](http://wppdf.org/ "Your ultimate flipbook software") 
+If you want more features such as zoom please support the development by purchasing the premium version[ For Only $19  ](http://wppdf.org/ "Your ultimate flipbook software") 
 
 if you need assistant please contact us through info[@]wppdf.org 
 
