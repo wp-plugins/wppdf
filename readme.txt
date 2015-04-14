@@ -39,9 +39,7 @@ Publish PDF Documents on your wordpress blog.This plugin is idea for magazines a
 Here's a link to Working demo's and examples [Demo and Example - Premium Edition](http://demo.wppdf.org/ "Click here for Demo and Examples") 
 
 
-If you want more features such as zoom please support the development by purchasing the premium version[ For Only $19  ](http://wppdf.org/ "Your ultimate flipbook software") 
-
-if you need assistant please contact us through info[@]wppdf.org 
+For assistant and feedback please feel free to contact us through info[@]wppdf.org 
 
 
 
