@@ -29,7 +29,8 @@ Publish PDF Documents on your wordpress blog.This plugin is idea for magazines a
 1. Navigation Controls
 1. Mult-Zoom 
 1. Retina display support
-1. Shortcode support for book shelf
+1. Shortcode support for shelf and inserting publications in blogs
+1. 1 Year support 
 
 
 
