@@ -2,7 +2,7 @@
 Contributors: wppdf
 Donate link: http://wppdf.org/
 
-Tags: Flipbook, issuu, PDF Viewer, PDF Flipbook Viewer, Free PDF Plugin , PDF Plugin book,  ebook, flip, flipbook, html5, jquery, wordpress embedded pdf, responsive flipbook wordpress plugin, wordpress pdf viewer
+Tags: Flipbook, issuu, PDF Viewer, PDF Flipbook Viewer, Free PDF Plugin , PDF Plugin book,  wordpress pdf viewer plugin, flip, flipbook,wordpress embed pdf, jquery, wordpress embedded pdf, responsive flipbook wordpress plugin, wordpress pdf viewer
 
 Requires at least: 3.0.1
 Tested up to: 3.4
