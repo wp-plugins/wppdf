@@ -40,7 +40,7 @@ Publish PDF Documents on your wordpress blog.This plugin is idea for magazines a
 = Get Updates = 
 We are always updating the plugin. Subscribe to our mailing list to get latest updates with the plugin.
 
-Updates [Subscribe to our mailing list to get updates and tips](http://www.wppdf.org/?page_id=65 "Click here to subscribe to our mailing list and receive updates") 
+Updates [Subscribe to our mailing list to get updates and tips](http://eepurl.com/blJO2L "Click here to subscribe to our mailing list and receive updates") 
 
 
 = Demo/Example =
