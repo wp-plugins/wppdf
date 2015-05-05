@@ -33,7 +33,7 @@ Publish PDF Documents on your wordpress blog.This plugin is idea for magazines a
 1. Shortcode support for shelf and inserting publications in blogs
 1. 1 Year support + updates
 
-[Start publishing your pdfs like crazy get the pro edition ](http://wppdf.org/ "Wppdf Pro Edition")
+[Get the Pro edition at 50% discount ](http://wppdf.org/ "Wppdf Pro Edition")
 
 
 
