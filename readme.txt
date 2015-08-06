@@ -78,12 +78,15 @@ No! This plugin uses pdfjs libray to render pdf directly on brownser without any
 
 = 1.0 =
 * Released first version.
+* We have fixed various bugs as well as upgraded to new version of pdf reader.
+
 
 
 == Upgrade Notice ==
 
 = 1.0 =
 Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
+
 
 
 
