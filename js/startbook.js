@@ -281,8 +281,7 @@
 
             function draw(){
                 if(zoom){
-                    renderZoomMath();
-                    drawZoomSheets();
+                    
                 }
                 if ( dirtyCount > 0 ) {
                     if(isTurning){
@@ -321,7 +320,7 @@
 
                         }
                     }
-                    rightPage.innerHTML = '<div id="instructions"><p> <i class="fa fa-search-plus fa-1x"></i>  www.wppdf.org</p> <hr> <p> use arrows or drag page corners</p></div>';
+                    rightPage.innerHTML = '<div id="instructions"><p> <i class="fa fa-search-plus fa-1x"></i>  click anywhere on the page to zoom in or out</p> <hr> <p> use arrows or drag page corners</p></div>';
 
                     $("#lp-right-page").css({background: "rgba(0,0,0,0)"});
                     $("#lp-left-page").css({background: "rgba(0,0,0,0)"});
@@ -565,8 +564,7 @@
             }
 
             function renderZoomMath(){
-                zoomFollow.x += (zoomMouse.x - zoomFollow.x);
-                zoomFollow.y += (zoomMouse.y - zoomFollow.y);
+             
             }
 
             function renderMath() {
@@ -727,7 +725,6 @@
 
 
             function drawZoomSheets(){
-                $("#lp-book").css({transform: 'translate3d(' + -(Math.floor(zoomFollow.x))+ 'px, ' + -(Math.floor(zoomFollow.y))+ 'px, 0)'});
             }
 
             function drawFlipSheets() {
@@ -885,7 +882,7 @@
                             }
                             $("#lp-clip2").css({"background": "#404040"});
                             $("#lp-clip2").css({"background-image": "url(texture.png)"});
-                            $("#lp-clip2").html('<div id="instructions"><p> <i class="fa fa-search-plus fa-1x"></i>  www.wppdf.com </p> <hr> <p> use arrows or drag page corners</p></div>');
+                            $("#lp-clip2").html('<div id="instructions"><p> <i class="fa fa-search-plus fa-1x"></i>  click anywhere on the page to zoom in or out</p> <hr> <p> use arrows or drag page corners</p></div>');
                             $('#lp-inner-clip').append(testDiv2);
                         }
                     }
@@ -1246,17 +1243,48 @@
                 isTurning = true;
             }
 
+            function zoomPages(_rangeValue){
+
+               
+            }
 
             $(window).keydown(function(event){
                 if(event.which===37){
                     movePrevious();
                 }else if(event.which === 39){
                     moveNext();
+                }else if(event.which === 38){
+                    if(zoomValue === 1.0) return;
+                  
+                }else if(event.which === 40) {
+                    if(zoomValue===0.5) return;
+                
                 }
                 else{
                     //alert(event.which);
                 }
             });
+
+
+            $(window).bind('mousewheel DOMMouseScroll', function(event){
+                if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+                    if(zoomValue >= 1.0) {
+                       return; 
+                    }  
+                    zoomValue= zoomValue + 0.1;
+                    zoomPages(zoomValue.toFixed(1));
+                }
+                else {
+                    // scroll down
+                    if(zoomValue  <= 0.5 ) {
+                        console.log("Bad");
+                        return;
+                    }
+                    zoomValue-=0.1;
+                    zoomPages(zoomValue.toFixed(1));
+                }
+            });
+
 
             var menuNext3 = document.getElementById("next-thumb-page");
             var menuPrev3 = document.getElementById("prev-thumb-page");
@@ -1270,7 +1298,65 @@
                 var rangeValue = jQuery(this).val();
                 zoomPages(rangeValue);
             });
-    
+            /*   
+             *$("#lp-book").click(function(event){
+
+
+                if(isZoomDisabled){
+                    return;
+                }
+                if(clickedArea!="nn"){
+                } else{
+                    if(!zoom){
+                        if( isTurning ) {
+                            return;
+                        };
+                        xCoord = event.clientX;
+                        yCoord = event.clientY;
+                        mouseX = xCoord;
+                        mouseY = yCoord;
+                        zoomMouse.x = xCoord;
+                        zoomMouse.y = yCoord;
+                        drawZoomSheets();
+              
+
+                        //Trigger the zoom event using the jquery triggers 
+                        $("#lp").trigger({
+                            type: "lpZoomEvent",
+                            scale: "in"
+                        });
+
+                        zoom = true;
+
+                        $("#lp-inner-clip").hide();
+                        $("#lp-inner-right").hide();
+                        $("#lp-right-clip2").hide();
+                        $("#lp-inner-2-left").hide();
+                    }else{
+                        $("#lp-inner-clip").show();
+                        $("#lp-inner-right").show();
+                        $("#lp-right-clip2").show();
+                        $("#lp-inner-2-left").show();
+
+                        $("#lp-left-page").width(width).height(height);
+                        $("#lp-right-page").width(width).height(height);
+                        zoomMouse.x = 0;
+                        zoomMouse.y = 0;
+
+                        $("#lp-book").css({transform: 'translate3d(' + 0+ 'px, ' + 0+ 'px, 0)'});
+
+                         //Trigger the zoom event using the jquery triggers 
+                        $("#lp").trigger({
+                            type: "lpZoomEvent",
+                            scale: "out"
+                        });
+
+                        zoom = false;
+                        $("#lp-book").css({left: '0%'});
+                    }
+                }
+             *});
+            */
             Hammer(menuPrev3).on("tap", function(event){
                 if(isMenuSliding) {
                     return;

@@ -140,7 +140,7 @@ class Flipbook_Plugin extends Flipbook_LifeCycle {
             $excerpt = get_the_excerpt();
             $pdf_worker_path = plugins_url("js/pdf.worker.js", __FILE__);
             $uploaded_pdf = get_post_meta($current_post_id, 'pdf_file_attachment', true );
-            $pdf_path_url = $uploaded_pdf['url'];
+            
 
             $current_post_id = get_the_ID(); 
             $uploaded_thumbnail = get_post_meta( $current_post_id, 'wp_flipbook_thumbnail', true );
@@ -186,8 +186,7 @@ class Flipbook_Plugin extends Flipbook_LifeCycle {
         if(is_archive())
             $pdf_worker_path = plugins_url("js/pdf.worker.js", __FILE__);
             $id = $atts['id'];
-            $uploaded_pdf = get_post_meta($id, 'pdf_file_attachment', true );
-            $pdf_path_url = $uploaded_pdf['url'];
+            $pdf_path_url = get_post_meta($id, 'pdf_file_attachment', true );
 
             $uploaded_thumbnail = get_post_meta($id, 'wp_flipbook_thumbnail', true );
             if(isset($uploaded_thumbnail['url'])){
@@ -261,7 +260,11 @@ class Flipbook_Plugin extends Flipbook_LifeCycle {
                                     <div id="next-thumb-page"><i id="next-thumb-page-icon" class="fa fa-angle-right fa-4x fa-inverse"></i></div>
                                     <div id="prev-thumb-page"><i id="prev-thumb-page-icon" class="fa fa-angle-left  fa-4x"></i></div>
                                     </div>
-                                 
+                                    <div id="topnavbar">
+                                        <div class="zoom-slider" ><input   id="zoomRange" name="zoomValue" type="range" min="0.5" max="1" value="0.5" step="0.1"  /></div>
+                                        <div class="navbuttons" > <div id="prev_nav" class="prev_nav_button"> </div> <div id="next_nav" class="next_nav_button"> </div> </div>
+                                         <div id="showPage" > </div> 
+                                    </div>
 
                                      <div class="mfp-close"  style="  z-index:4000">
                                      [x]
@@ -311,7 +314,11 @@ class Flipbook_Plugin extends Flipbook_LifeCycle {
                         <div id="next-thumb-page"><i id="next-thumb-page-icon" class="fa fa-angle-right fa-4x fa-inverse"></i></div>
                         <div id="prev-thumb-page"><i id="prev-thumb-page-icon" class="fa fa-angle-left  fa-4x"></i></div>
                         </div>
-                       
+                        <div id="topnavbar">
+                            <div class="zoom-slider" ><input   id="zoomRange" name="zoomValue" type="range" min="0.5" max="1" value="0.5" step="0.1"  /></div>
+                            <div class="navbuttons" > <div id="prev_nav" class="prev_nav_button"> </div> <div id="next_nav" class="next_nav_button"> </div> </div>
+                             <div id="showPage" > </div> 
+                        </div>
                         <div id ="lp-book" style="overflow: hidden">
                         <div id="lp-right-page"> </div>
                         <div id="lp-left-page">  </div>
@@ -326,8 +333,7 @@ class Flipbook_Plugin extends Flipbook_LifeCycle {
         </div>
             <?php 
                 $pdf_worker_path = plugins_url("js/pdf.worker.js", __FILE__);
-                $uploaded_pdf = get_post_meta( $postid, 'pdf_file_attachment', true );
-                $pdf_path_url = $uploaded_pdf['url'];
+                $pdf_path_url = get_post_meta( $postid, 'pdf_file_attachment', true );
             ?>
 
             <script type="text/javascript">
@@ -385,30 +391,14 @@ class Flipbook_Plugin extends Flipbook_LifeCycle {
 
     public function wp_flipbook_pdf_file(){
         $postid = get_the_ID();
-        $uploaded_pdf = get_post_meta( $postid, 'pdf_file_attachment', true );
-
-        if(isset($uploaded_pdf['url'])){
-            $pdf_path_url = $uploaded_pdf['url'];
-        }else{
-            $pdf_path_url = "";
-        }
-        $suffix = "pdf";
+        wp_nonce_field( plugin_basename( __FILE__ ), 'upload_image_nonce' );
         $html = "";
-        $wp_name = basename( $pdf_path_url);
-
-
-        wp_nonce_field(plugin_basename(__FILE__), 'pdf_file_attachment_nonce');
-
-        if(empty($wp_name)){
-
-        }else{
-            $html = '<p class="description">';
-            $html .= 'The following PDF has been uploaded.';
-            $html .= '</p>';
-            $html .= "<p style='background-color:#eeeeff;font-size: 14px;padding: 10px'> $wp_name</p>";
-        }
-        $html .= '<input type="file" id="pdf_file_attachment" name="pdf_file_attachment" value="" size="25">';
+        $html .= '<label for="upload_image">';
+        $html .= '<input id="upload_image" type="text" size="36" name="ad_image" value="" />';
+        $html .= '<input id="upload_image_button" class="button" type="button" value="Select PDF" />';
+        $html .= '</label>';
         echo $html;
+
     }
 
     public function wp_flipbook_thumbnail(){
@@ -434,23 +424,20 @@ class Flipbook_Plugin extends Flipbook_LifeCycle {
 
     public function save_pdf_attachment_file() {
         $post_id = get_the_ID();
-        if(!empty($_FILES['pdf_file_attachment']['name'])) {
-            $supported_types = array('application/pdf');
-            $arr_file_type = wp_check_filetype(basename($_FILES['pdf_file_attachment']['name']));
-            $uploaded_type = $arr_file_type['type'];
 
-            if(in_array($uploaded_type, $supported_types)) {
-                $upload = wp_upload_bits($_FILES['pdf_file_attachment']['name'], null, file_get_contents($_FILES['pdf_file_attachment']['tmp_name']));
-                if(isset($upload['error']) && $upload['error'] != 0) {
-                    wp_die('There was an error uploading your file. The error is: ' . $upload['error']);
-                } else {
-                    update_post_meta($post_id, 'pdf_file_attachment', $upload);
-                }
-            }
-            else {
-                wp_die("The file type that you've uploaded is not a PDF.");
-            }
-        }
+        global $custom_meta_fields;  
+
+        //Verify if its auto saving routine
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+        return;
+
+        // Secondly we need to check if the user intended to change this value.
+        if ( ! isset( $_POST['upload_image_nonce'] ) || ! wp_verify_nonce( $_POST['upload_image_nonce'], plugin_basename( __FILE__ ) ) )
+          return;
+
+        $pdf_file_path = $_POST['ad_image'];
+         // loop through fields and save the data
+        update_post_meta($post_id,'pdf_file_attachment' , $pdf_file_path);
     }
 
     public function save_thumbnail_file() {
@@ -486,6 +473,10 @@ class Flipbook_Plugin extends Flipbook_LifeCycle {
         add_action('post_edit_form_tag', array(&$this,'update_edit_form'));
         add_action('wp_enqueue_scripts', array(&$this,'wp_enqueue_script'));
 
+
+        add_action('admin_enqueue_scripts', array(&$this,'my_admin_scripts'));
+ 
+        
         // Hooking up our function to theme setup
         //add_action( 'init', 'create_posttype' );   
 
@@ -509,12 +500,18 @@ class Flipbook_Plugin extends Flipbook_LifeCycle {
 
     }
 
+    public function my_admin_scripts() {
+        wp_enqueue_media();
+        wp_register_script('my-admin-js', plugins_url('js/my-admin.js', __FILE__), array('jquery'));
+        wp_enqueue_script('my-admin-js');
+        
+    }
 
     // Add the Events Meta Boxes for shortcode ,pdf file and thumbnail 
     public function add_events_metaboxes() {
-        add_meta_box('wp_flipbook_shortcode', 'Flipbook Shortcode', array(&$this,'wp_flipbook_shortcode'), 'publications', 'normal', 'high');
-        add_meta_box('wp_flipbook_pdf_file', 'Flipbook PDF File', array(&$this,'wp_flipbook_pdf_file'), 'publications','normal','high');
-        add_meta_box('wp_flipbook_thumbnail', 'Flipbook Thumbnail ', array(&$this,'wp_flipbook_thumbnail'), 'publications','normal','high');
+        add_meta_box('wp_flipbook_shortcode', 'Shortcode', array(&$this,'wp_flipbook_shortcode'), 'publications', 'normal', 'high');
+        add_meta_box('wp_flipbook_pdf_file', 'PDF File', array(&$this,'wp_flipbook_pdf_file'), 'publications','normal','high');
+        add_meta_box('wp_flipbook_thumbnail', 'Thumbnail ', array(&$this,'wp_flipbook_thumbnail'), 'publications','normal','high');
 
     }
 

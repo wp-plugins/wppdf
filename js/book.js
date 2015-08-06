@@ -11,8 +11,6 @@ var CLEANUP_TIMEOUT = 3000;
 var cache =  new Cache(DEFAULT_CACHE_SIZE);
 var startBook = new flipBook(jQuery);
 
-
-
 var UNKNOWN_SCALE = 0;
 var CSS_UNITS = 96.0 / 72.0;
 
@@ -45,6 +43,8 @@ var PDFView = {
             updateViewArea();
         }),0);        
     });
+
+  
    
     },
 
@@ -53,38 +53,7 @@ var PDFView = {
         if(scale > 0){
             this.setScaleUpdatePages(scale);
         }else{
-            var currentPage = this.pages[this.page -1];
-
-
-            if(!currentPage){
-                return;
-            }
-
-            var hpadding = SCROLLBAR_PADDING;
-            var vpadding = VERTICAL_PADDING;
-
-            var pageWidthScale = (this.container.clientWidth - hpadding) / (currentPage.width * currentPage.scale);
-            var pageHeightScale = (this.container.clientHeight - vpadding) / (currentPage.height * currentPage.scale);
-
-
-
-            switch(value){
-                case 'page-actual':
-                    scale =1;
-                    break;
-                case 'page-width':
-                    scale = pageWidthScale;
-                    break;
-                case 'page-height':
-                    scale = pageHeightScale;
-                    break;
-                case 'page-fit':
-                    scale = Math.min(pageWidthScale, pageHeightScale);
-                    break;
-                default:
-                    return;
-            }
-            this.setScaleUpdatePages(scale);
+            this.setScaleUpdatePages(1);
         }
     },
 
@@ -103,8 +72,7 @@ var PDFView = {
     },
 
     open: function pdfViewOpen(url,scale){
-      
-
+        
         var self = this;
         self.loading = true;
         self.downloadComplete = false;
@@ -117,7 +85,6 @@ var PDFView = {
         var passWordNeeded = false;
         parameters.url = url;
 
-    
         PDFJS.getDocument(url).then(function getDocumentCallBack(pdfDocument) {
             self.load(pdfDocument, scale);
         });
